@@ -26,7 +26,7 @@ void	menu(game_t *game)
 	
 	time = sfClock_getElapsedTime(game->clock);
 	sec = sfTime_asSeconds(time);
-        sfSprite_setScale(game->sprites[22].sprite, (sfVector2f){4, 4});
+	sfSprite_setScale(game->sprites[22].sprite, (sfVector2f){4, 4});
 	sfSprite_setPosition(game->sprites[22].sprite, (sfVector2f){0, 0});
 	sfSprite_setPosition(game->sprites[36].sprite, (sfVector2f){900, 50});
 	sfSprite_setScale(game->sprites[36].sprite, (sfVector2f){-1, 1});

@@ -54,7 +54,7 @@ void	my_hunter(void)
 	window = sfRenderWindow_create(mode, "my_hunter", 6, NULL);
 	sfRenderWindow_setFramerateLimit(window, 30);
 	sfRenderWindow_setMouseCursorVisible(window, sfFalse);
-        game.sprites = create_things(&game, nb_sprite);
+	game.sprites = create_things(&game, nb_sprite);
 	sfMusic_play(game.musics[7]);
 	while (sfRenderWindow_isOpen(window)) {
 		sfRenderWindow_clear(window, sfBlack);

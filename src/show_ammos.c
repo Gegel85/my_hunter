@@ -15,14 +15,13 @@ void	show_ammos(game_t *game)
 	sfVector2f	pos = {400, 732};
 	sfVector2f	scale = {4, 4};
 
-	for (int i = 18; i < 22; i++)
-		sfSprite_setScale(game->sprites[i].sprite, scale);
-	sfSprite_setPosition(game->sprites[18].sprite, pos);
+	sfSprite_setScale(game->sprites[16].sprite, scale);
 	pos = (sfVector2f){412, 736};
-	sfSprite_setPosition(game->sprites[19].sprite, pos);
-	pos = (sfVector2f){444, 736};
-	sfSprite_setPosition(game->sprites[20].sprite, pos);
-	pos = (sfVector2f){476, 736};
+	for (int i = 17; i < 22; i++) {
+		sfSprite_setScale(game->sprites[i].sprite, scale);
+		sfSprite_setPosition(game->sprites[i].sprite, pos);
+		pos.x += 32;
+	}
 	sfSprite_setPosition(game->sprites[21].sprite, pos);
 	rect->left = miss > 0 ? 0 : 4;
 	rect = &game->sprites[20].rect;
