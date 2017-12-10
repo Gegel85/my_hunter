@@ -16,7 +16,7 @@ int		manage_mouse_click(sfRenderWindow *window, game_t *game);
 int		manage_keyboard(sfEvent event, game_t *game);
 int		close_window(sfRenderWindow *window);
 int		init_bonus(int duck_type);
-int		rand();
+int		rand(void);
 int		modify_duck_speed(game_t *game);
 void		reset_game(game_t *game);
 void		reset_sprite_pos(sprite_f *sprites, int nb);
@@ -38,7 +38,7 @@ void		show_score(game_t *game);
 void		display_bonus(game_t *game);
 void		show_ammos(game_t *game);
 void		modify_mouse_pos(sfEvent *ev, sfRenderWindow *win, game_t *g);
-void		my_hunter();
+void		my_hunter(void);
 void		update_ducks(game_t *game);
 void		menu(game_t *game);
 void		modify_mouse_pos_press(sfEvent *event, sfRenderWindow *window, \

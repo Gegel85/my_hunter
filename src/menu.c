@@ -23,7 +23,7 @@ void	menu(game_t *game)
 	sfIntRect	*rect = &game->sprites[35].rect;
 	sfTime		time;
 	float		sec;
-	
+
 	time = sfClock_getElapsedTime(game->clock);
 	sec = sfTime_asSeconds(time);
 	sfSprite_setScale(game->sprites[22].sprite, (sfVector2f){4, 4});

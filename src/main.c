@@ -9,7 +9,7 @@
 #include "my.h"
 #include <stdlib.h>
 
-void	display_description()
+void	display_description(void)
 {
 	my_printf("\tThe goal is to shoot the ducks. Each duck\n\t");
 	my_printf("gives a number of points depending on its color\n\t");
