@@ -11,15 +11,15 @@
 
 void	set_combo_pos(int bonus, sfVector2f *pos)
 {
-        for (; bonus >= 10; bonus /= 10)
-                pos->x += 32;
+	for (; bonus >= 10; bonus /= 10)
+		pos->x += 32;
 }
 
 void	display_combo(game_t *game)
 {
 	sfVector2f      pos = {550, 750};
-        unsigned int    bonus = game->combo;
-        sfVector2f      scale = {4, 4};
+	unsigned int    bonus = game->combo;
+	sfVector2f      scale = {4, 4};
 	int		i = 40;
 
 	sfSprite_setScale(game->sprites[38].sprite, scale);

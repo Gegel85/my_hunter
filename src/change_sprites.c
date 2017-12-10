@@ -79,7 +79,7 @@ void	update_ducks(game_t *game)
 		game->ducks[0].state -= 6;
 	if (game->ducks[0].x < -110 || game->ducks[0].x > 1024) {
 		game->speed *= -1;
-	        game->bonus /= 2;
+		game->bonus /= 2;
 		game->ducks[0].hit = 1;
 		game->combo = 0;
 	}
