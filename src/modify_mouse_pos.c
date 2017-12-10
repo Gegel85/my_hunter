@@ -19,6 +19,11 @@ void	modify_mouse_pos(sfEvent *event, sfRenderWindow *window, game_t *game)
 	mpr = sfRenderWindow_mapPixelToCoords(w, mp, v);
 	game->mousex = mpr.x;
 	game->mousey = mpr.y;
+	if (game->cheat)
+		if (game->menu == 1) {
+			game->mousex = game->ducks[0].x + 75;
+			game->mousey = game->ducks[0].y + 100;
+		}
 }
 
 void	modify_mouse_pos_press(sfEvent *e, sfRenderWindow *window, game_t *game)
@@ -32,4 +37,9 @@ void	modify_mouse_pos_press(sfEvent *e, sfRenderWindow *window, game_t *game)
 	mpr = sfRenderWindow_mapPixelToCoords(w, mp, v);
 	game->mousex = mpr.x;
 	game->mousey = mpr.y;
+	if (game->cheat)
+		if (game->menu == 1) {
+			game->mousex = game->ducks[0].x + 75;
+			game->mousey = game->ducks[0].y + 100;
+		}
 }

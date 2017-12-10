@@ -13,6 +13,10 @@
 
 int	change_duck_rect(sfIntRect *rect, game_t *game, int i)
 {
+	if (game->cheat) {
+		game->mousex = game->ducks[0].x + 75;
+		game->mousey = game->ducks[0].y + 100;
+	}
 	switch (game->ducks[i].state / 3) {
 	case 2:
 	case 0:
@@ -70,14 +74,14 @@ void	update_ducks(game_t *game)
 
 	game->ducks[0].x += game->speed * (game->ducks[0].type + 1);
 	if (game->ducks[0].x > 1024) {
-		game->speed *= -1;
 		game->ducks[0].state += 6;
-		game->bonus /= 2;
-		game->ducks[0].hit = 1;
-	} else if (game->ducks[0].x < -110) {
-		game->speed *= -1;
+	} else if (game->ducks[0].x < -110)
 		game->ducks[0].state -= 6;
-		game->bonus /= 2;
+	if (game->ducks[0].x < -110 || game->ducks[0].x > 1024) {
+		game->speed *= -1;
+	        game->bonus /= 2;
+		game->ducks[0].hit = 1;
+		game->combo = 0;
 	}
 	change_duck_state(&game->ducks[0]);
 	change_duck_rect(&sprites[3].rect, game, game->ducks[0].type);

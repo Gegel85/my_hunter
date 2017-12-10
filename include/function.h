@@ -38,9 +38,10 @@ void		show_score(game_t *game);
 void		display_bonus(game_t *game);
 void		show_ammos(game_t *game);
 void		modify_mouse_pos(sfEvent *ev, sfRenderWindow *win, game_t *g);
-void		my_hunter(void);
+void		my_hunter(game_t *game_struct);
 void		update_ducks(game_t *game);
 void		menu(game_t *game);
+void		display_combo(game_t *game);
 void		modify_mouse_pos_press(sfEvent *event, sfRenderWindow *window, \
 game_t *game);
 void		change_nb_sprite_rect(int value, game_t *game, int sprite_id);

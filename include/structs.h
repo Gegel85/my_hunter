@@ -47,6 +47,8 @@ typedef struct {
 	float		mousey;
 	int		speed;
 	int		miss;
+	int		combo;
+	int		cheat;
         duck		*ducks;
 	dog_t		dog;
 	float		var;

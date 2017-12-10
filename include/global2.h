@@ -44,11 +44,16 @@ const	sprite_conf s_config[] = {
 	{"sprites/nbr_bonsprites.png", 78, 7},
 	{"sprites/nbr_bonsprites.png", 78, 7},
 	{"sprites/nbr_bonsprites.png", 78, 7},
+	{"sprites/nbr_bonsprites.png", 78, 7},
 	{"sprites/play.png", 256, 200},
 	{"sprites/quit.png", 256, 200},
-	{"sprites/mouse_cursor.png", 30, 30},
 	{"sprites/ducks.png", 139, 169},
-	{"sprites/ducks.png", 139, 169}
+	{"sprites/ducks.png", 139, 169},
+	{"sprites/mouse_cursor.png", 30, 30},
+	{"sprites/combo.png", 49, 9},
+	{"sprites/nbr_bonsprites.png", 78, 7},
+	{"sprites/nbr_bonsprites.png", 78, 7},
+	{"sprites/cheat_mode.png", 49, 17}
 };
 
 #endif

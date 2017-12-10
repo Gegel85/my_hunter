@@ -18,7 +18,8 @@ SRC =	src/main.c \
 	src/modify_mouse_pos.c \
 	src/show_ammos.c \
 	src/my_hunter.c \
-	src/menu.c
+	src/menu.c \
+	src/combo.c
 
 OBJ =	$(SRC:.c=.o)
 

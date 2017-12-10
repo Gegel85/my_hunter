@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.h>
 #include "structs.h"
+#include "function.h"
 
 void	change_nb_sprite_rect(int value, game_t *game, int sprite_id)
 {
@@ -37,8 +38,13 @@ void	draw_score(game_t *game, unsigned int score, sfVector2f pos, int s_id)
 
 void	show_hscore(game_t *game)
 {
-	sfVector2f	pos = {829, 732};
+	sfVector2f	pos = {829, 10};
 
+	if (game->cheat) {
+		sfSprite_setScale(game->sprites[41].sprite, (sfVector2f){4, 4});
+		sfSprite_setPosition(game->sprites[41].sprite, pos);
+	}
+	pos = (sfVector2f){829, 732};
 	if (game->menu == 5)
 		pos = (sfVector2f){604, 732};
 	sfSprite_setScale(game->sprites[16].sprite, (sfVector2f){4, 4});
@@ -50,7 +56,10 @@ void	show_score(game_t *game)
 {
 	sfVector2f	pos = {0, 732};
 
-	sfSprite_setScale(game->sprites[9].sprite, (sfVector2f){4, 4});
-	sfSprite_setPosition(game->sprites[9].sprite, pos);
-	draw_score(game, game->score, pos, 10);
+	if (game->menu != 5) {
+		display_combo(game);
+		sfSprite_setScale(game->sprites[9].sprite, (sfVector2f){4, 4});
+		sfSprite_setPosition(game->sprites[9].sprite, pos);
+		draw_score(game, game->score, pos, 10);
+	}
 }

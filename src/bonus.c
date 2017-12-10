@@ -19,9 +19,7 @@ void	find_good_pos(sfVector2f *pos)
 
 void	set_bonus_pos(int bonus, sfVector2f *pos)
 {
-	if (bonus >= 10)
-		pos->x += 32;
-	if (bonus >= 100)
+	for (; bonus >= 10; bonus /= 10)
 		pos->x += 32;
 }
 
@@ -50,7 +48,7 @@ void	display_bonus(game_t *game)
 		sfSprite_setPosition(game->sprites[17].sprite, pos);
 		pos.x += 196;
 		set_bonus_pos(bonus, &pos);
-		for (int i = 31; bonus > 0 && i >= 0; i--) {
+		for (int i = 32; bonus > 0 && i >= 0; i--) {
 			sfSprite_setScale(game->sprites[i].sprite, scale);
 			sfSprite_setPosition(game->sprites[i].sprite, pos);
 			change_nb_sprite_rect(bonus % 10 + 1, game, i);

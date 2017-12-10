@@ -28,7 +28,10 @@ void	verify_score(game_t *game)
 void	destroy_all(game_t *game, int nb, sfRenderWindow *window)
 {
 	verify_score(game);
-	save_score(game);
+	if (game->cheat)
+		my_printf("Score is not saved in cheat mode !\n");
+	else
+		save_score(game);
 	for (int i = 0; i < nb; i++)
 		sfSprite_destroy(game->sprites[i].sprite);
 	for (int i = 0; i < nb; i++)
@@ -43,13 +46,13 @@ void	destroy_all(game_t *game, int nb, sfRenderWindow *window)
 	sfRenderWindow_destroy(window);
 }
 
-void	my_hunter(void)
+void	my_hunter(game_t *game_struct)
 {
 	sfEvent		event;
 	sfVideoMode	mode = {1024, 800, 32};
 	sfRenderWindow	*window;
-	game_t		game;
-	int		nb_sprite = 37;
+	game_t		game = *game_struct;
+	int		nb_sprite = 42;
 
 	window = sfRenderWindow_create(mode, "my_hunter", 6, NULL);
 	sfRenderWindow_setFramerateLimit(window, 30);

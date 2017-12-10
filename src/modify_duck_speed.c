@@ -36,7 +36,9 @@ void	change_duck_speed(game_t *game)
 		game->speed++;
 	if (game->ducks[0].hit == 0)
 		sfMusic_play(game->musics[2]);
+	game->combo++;
 	game->ducks[0].hit = 0;
+	game->bonus *= game->combo;
 	game->score += (game->ducks[0].type + 1) * 100 + game->bonus;
 	game->ducks[0].state = 9;
 	sfClock_restart(game->ducks[0].clock);
@@ -55,5 +57,6 @@ int	modify_duck_speed(game_t *game)
 		return (my_printf("Well done !\nScore : %u\n", game->score));
 	}
 	game->miss++;
+	game->combo = 0;
 	return (my_printf("Too Bad...\nMissed : %i\n", game->miss));
 }

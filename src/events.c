@@ -13,9 +13,9 @@
 
 void	display_mouse(game_t *game)
 {
-	sfSprite	*sprite1 = game->sprites[32].sprite;
-	sfSprite	*sprite2 = game->sprites[33].sprite;
-	sfSprite	*sprite = game->sprites[34].sprite;
+	sfSprite	*sprite1 = game->sprites[33].sprite;
+	sfSprite	*sprite2 = game->sprites[34].sprite;
+	sfSprite	*sprite = game->sprites[37].sprite;
 	int		mx = game->mousex;
 	int		my = game->mousey;
 	sfVector2f	nul = {0, 0};
