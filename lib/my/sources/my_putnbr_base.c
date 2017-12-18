@@ -23,7 +23,7 @@ char	*my_putnbrbase(unsigned int nbr, char const *base)
 	} while (nbr > 0);
 	new_nbr = malloc(nb_of_chars + 1);
 	nbr = 0;
-	for (int i = nb_of_chars - 1 ; i >= 0 ; i--) {
+	for (int i = nb_of_chars - 1; i >= 0; i--) {
 		new_nbr[nbr] = all_chars[i];
 		nbr++;
 	}

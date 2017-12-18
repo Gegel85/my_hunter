@@ -49,7 +49,7 @@ typedef struct {
 	int		miss;
 	int		combo;
 	int		cheat;
-        duck		*ducks;
+	duck		*ducks;
 	dog_t		dog;
 	float		var;
 	sfClock		*clock;

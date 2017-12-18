@@ -9,15 +9,12 @@ FILE =	convert_base.c \
 	my_getnbr_base.c \
 	my_getnbr.c \
 	my_isneg.c \
-	my_is_prime.c \
 	my_putchar.c \
 	my_put_nbr.c \
 	my_putstr.c \
 	my_revstr.c \
-	my_showmem.c \
 	my_showstr.c \
 	my_sort_int_array.c \
-	my_strcapitalize.c \
 	my_strcat.c \
 	my_strcmp.c \
 	my_strcpy.c \
