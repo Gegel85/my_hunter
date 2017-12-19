@@ -20,8 +20,6 @@ void	load_sounds(game_t *game)
 	game->musics[5] = sfMusic_createFromFile("sound/99-duck-lands-sfx.ogg");
 	game->musics[6] = sfMusic_createFromFile("sound/99-gunshot-sfx.ogg");
 	game->musics[7] = sfMusic_createFromFile("sound/01-title-screen.ogg");
-	for (int i = 0; i < 8; i++)
-		if (!game->musics[i])
-			exit(84);
-	sfMusic_setLoop(game->musics[7], sfTrue);
+	if (game->musics[7])
+		sfMusic_setLoop(game->musics[7], sfTrue);
 }

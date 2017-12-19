@@ -11,12 +11,14 @@
 
 void	restart(game_t *game)
 {
-	sfClock_destroy(game->clock);
+	if (game->clock)
+		sfClock_destroy(game->clock);
 	reset_game(game);
 	my_printf("Restarting game\n");
 	game->menu = 5;
 	game->miss = 0;
-	sfMusic_play(game->musics[7]);
+	if (game->musics[7])
+		sfMusic_play(game->musics[7]);
 }
 
 void	end_game(game_t *game)
@@ -26,8 +28,10 @@ void	end_game(game_t *game)
 
 	my_printf("Final score : %u\nFinal missed : %i\n", score, miss);
 	game->menu = 2;
-	sfMusic_play(game->musics[3]);
-	sfClock_restart(game->clock);
+	if (game->musics[3])
+		sfMusic_play(game->musics[3]);
+	if (game->clock)
+		sfClock_restart(game->clock);
 }
 
 void	change_menus(game_t *game)

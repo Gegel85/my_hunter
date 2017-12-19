@@ -51,6 +51,14 @@ int	analyse_events(sfRenderWindow *window, sfEvent event, game_t *game)
 	return (0);
 }
 
+void	play_music(game_t *game)
+{
+	if (game->musics[0])
+		sfMusic_play(game->musics[0]);
+	if (game->musics[7])
+		sfMusic_stop(game->musics[7]);
+}
+
 int	manage_mouse_click(sfRenderWindow *window, game_t *game)
 {
 	int	mx = game->mousex;
@@ -62,8 +70,7 @@ int	manage_mouse_click(sfRenderWindow *window, game_t *game)
 	} else if (game->menu == 5) {
 		if (mx >= 342 && mx <= 680 && my >= 496 && my <= 580) {
 			game->menu = 0;
-			sfMusic_play(game->musics[0]);
-			sfMusic_stop(game->musics[7]);
+			play_music(game);
 		} else if (mx >= 342 && mx <= 680 && my >= 596 && my <= 680)
 			close_window(window);
 	}

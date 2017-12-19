@@ -25,6 +25,22 @@ void	verify_score(game_t *game)
 	my_printf("Highest score of this session was %u !\n", game->maxscore);
 }
 
+void	free_csfml(game_t *game, int nb)
+{
+	for (int i = 0; i < nb; i++)
+		if (game->sprites[i].sprite)
+			sfSprite_destroy(game->sprites[i].sprite);
+	for (int i = 0; i < nb; i++)
+		if (game->sprites[i].texture)
+			sfTexture_destroy(game->sprites[i].texture);
+	for (int i = 0; i < 3; i++)
+		if (game->ducks[i].clock)
+			sfClock_destroy(game->ducks[i].clock);
+	for (int i = 0; i < 8; i++)
+		if (game->musics[i])
+			sfMusic_destroy(game->musics[i]);
+}
+
 void	destroy_all(game_t *game, int nb, sfRenderWindow *window)
 {
 	verify_score(game);
@@ -32,14 +48,7 @@ void	destroy_all(game_t *game, int nb, sfRenderWindow *window)
 		my_printf("Score is not saved in cheat mode !\n");
 	else
 		save_score(game);
-	for (int i = 0; i < nb; i++)
-		sfSprite_destroy(game->sprites[i].sprite);
-	for (int i = 0; i < nb; i++)
-		sfTexture_destroy(game->sprites[i].texture);
-	for (int i = 0; i < 3; i++)
-		sfClock_destroy(game->ducks[i].clock);
-	for (int i = 0; i < 8; i++)
-		sfMusic_destroy(game->musics[i]);
+	free_csfml(game, nb);
 	sfClock_destroy(game->clock);
 	free(game->ducks);
 	free(game->sprites);
@@ -58,7 +67,8 @@ void	my_hunter(game_t *game_struct)
 	sfRenderWindow_setFramerateLimit(window, 30);
 	sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 	game.sprites = create_things(&game, nb_sprite);
-	sfMusic_play(game.musics[7]);
+	if (game.musics[7])
+		sfMusic_play(game.musics[7]);
 	while (sfRenderWindow_isOpen(window)) {
 		sfRenderWindow_clear(window, sfBlack);
 		change_sprites(game.sprites, &game, nb_sprite);

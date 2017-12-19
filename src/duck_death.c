@@ -17,15 +17,19 @@ void	change_state(game_t *game, float sec)
 			sfMusic_play(game->musics[4]);
 		game->var = 0.07;
 		game->ducks[0].state++;
-		sfClock_restart(game->ducks[0].clock);
+		if (game->ducks[0].clock)
+			sfClock_restart(game->ducks[0].clock);
 		if (game->ducks[0].state == 12)
 			game->ducks[0].state = 10;
 	}
 	if (game->ducks[0].y >= 525) {
-		sfMusic_stop(game->musics[4]);
-		sfMusic_play(game->musics[5]);
+		if (game->musics[4])
+			sfMusic_stop(game->musics[4]);
+		if (game->musics[5])
+			sfMusic_play(game->musics[5]);
 		game->menu = 4;
-		sfClock_restart(game->clock);
+		if (game->clock)
+			sfClock_restart(game->clock);
 		game->ducks[0].state = 0;
 	}
 }
@@ -69,8 +73,13 @@ void	duck_fall(game_t *game)
 	sfSprite_setPosition(game->sprites[3].sprite, pos);
 }
 
-void	modify_dog_rect(game_t *game)
+void	modify_dog_rect(game_t *game, float sec)
 {
+	if (sec > 1 && game->var < 1) {
+		game->var = 1;
+		if (game->musics[1])
+			sfMusic_play(game->musics[1]);
+	}
 	game->sprites[2].rect.top = 0;
 	game->sprites[2].rect.left = 550;
 	game->sprites[2].rect.width = 219;
@@ -86,11 +95,7 @@ void	show_dog(game_t *game)
 
 	time = sfClock_getElapsedTime(game->clock);
 	sec = sfTime_asSeconds(time);
-	modify_dog_rect(game);
-	if (sec > 1 && game->var < 1) {
-		game->var = 1;
-		sfMusic_play(game->musics[1]);
-	}
+	modify_dog_rect(game, sec);
 	if (sec > 1 || game->var >= 1) {
 		if (game->var == 1 && game->dog.y > 450)
 			game->dog.y -= 5;

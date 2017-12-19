@@ -22,8 +22,6 @@ sprite_f	create_sprite(sprite_conf config)
 	sfIntRect	rect = {0, 0, config.width, config.height};
 
 	texture = sfTexture_createFromFile(config.file_path, NULL);
-	if (texture == 0)
-		exit(84);
 	sfSprite_setTexture(sprite, texture, sfTrue);
 	sfSprite_setTextureRect(sprite, rect);
 	if (compare_strings(config.file_path, "sprites/grass_spritesheet.png"))
