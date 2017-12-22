@@ -29,7 +29,7 @@ void	display_description(void)
 	my_printf("\t\t\tBase bonus points : 300\n\t\t\tSpeed : 3x faster\n");
 }
 
-void	display_help(int argc, char **args, game_t *game)
+int	display_help(int argc, char **args, game_t *game)
 {
 	int	return_value = 0;
 
@@ -45,17 +45,21 @@ void	display_help(int argc, char **args, game_t *game)
 		my_printf("USAGE\n\t%s [-h]\n\n", args[0]);
 		my_printf("DESCRIPTION\n\t-h : display this help\n\n");
 		display_description();
-		exit(return_value);
+		return (return_value);
 	}
+	return (-1);
 }
 
 int	main(int argc, char **args)
 {
 	game_t	game;
+	int	returned = -1;
 
 	game.cheat = 0;
 	if (argc > 1)
-		display_help(argc, args, &game);
+		returned = display_help(argc, args, &game);
+	if (returned != -1)
+		return (returned);
 	my_hunter(&game);
 	return (0);
 }
