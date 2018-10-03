@@ -1,1 +1,4 @@
 aut.h
+*.o
+*.a
+my_hunter
