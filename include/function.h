@@ -11,11 +11,11 @@
 #include <SFML/Graphics.h>
 #include "structs.h"
 
-int		analyse_events(sfRenderWindow *win, sfEvent evnt, game_t *game);
+int		analyse_events(sfRenderWindow *window, game_t *game);
 int		manage_mouse_click(sfRenderWindow *window, game_t *game);
 int		manage_keyboard(sfEvent event, game_t *game);
 int		close_window(sfRenderWindow *window);
-int		init_bonus(int duck_type);
+unsigned int	init_bonus(int duck_type);
 int		rand(void);
 int		modify_duck_speed(game_t *game);
 void		reset_game(game_t *game);

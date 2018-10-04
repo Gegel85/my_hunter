@@ -5,3 +5,5 @@ my_hunter
 *.exe
 cmake-build*
 .idea
+*.dll
+*.res

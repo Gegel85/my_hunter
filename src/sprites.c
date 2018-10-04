@@ -21,7 +21,13 @@ sprite_f	create_sprite(sprite_conf config)
 	sfVector2f	scale = {4, 4};
 	sfIntRect	rect = {0, 0, config.width, config.height};
 
+	if (!sprite)
+		exit(EXIT_FAILURE);
 	texture = sfTexture_createFromFile(config.file_path, NULL);
+	if (!texture) {
+		my_printf("Error: Cannot load file %s\n", config.file_path);
+		exit(EXIT_FAILURE);
+	}
 	sfSprite_setTexture(sprite, texture, sfTrue);
 	sfSprite_setTextureRect(sprite, rect);
 	if (compare_strings(config.file_path, "sprites/grass_spritesheet.png"))
@@ -42,6 +48,8 @@ void	reset_game(game_t *game)
 		game->ducks[i].state = 0;
 		game->ducks[i].type = rand() % 3;
 		game->ducks[i].hit = 0;
+		if (game->ducks[i].clock)
+			sfClock_destroy(game->ducks[i].clock);
 		game->ducks[i].clock = sfClock_create();
 	}
 	game->dog.x = 0;

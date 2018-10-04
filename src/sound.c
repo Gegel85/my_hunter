@@ -7,6 +7,7 @@
 
 #include <SFML/Audio.h>
 #include <stdlib.h>
+#include "my.h"
 #include "structs.h"
 
 void	load_sounds(game_t *game)
@@ -20,6 +21,12 @@ void	load_sounds(game_t *game)
 	game->musics[5] = sfMusic_createFromFile("sound/99-duck-lands-sfx.ogg");
 	game->musics[6] = sfMusic_createFromFile("sound/99-gunshot-sfx.ogg");
 	game->musics[7] = sfMusic_createFromFile("sound/01-title-screen.ogg");
-	if (game->musics[7])
-		sfMusic_setLoop(game->musics[7], sfTrue);
+	for (int i = 0; i < 8; i++) {
+		if (!game->musics[i]) {
+			my_printf("Error: Cannot load a sound file\n");
+			exit(EXIT_FAILURE);
+		}
+		sfMusic_setVolume(game->musics[i], 5);
+	}
+	sfMusic_setLoop(game->musics[7], sfTrue);
 }

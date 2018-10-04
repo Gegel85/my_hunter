@@ -26,35 +26,67 @@ OBJ =	$(SRC:.c=.o)
 INC =	-Iinclude \
 	-Ilib/my/includes
 
-LIB =	./lib/my/libmy.a
 
-LDFLAGS = -Llib/my -lmy -lc_graph_prog
+CSFML = -lcsfml-system		\
+	-lcsfml-window		\
+	-lcsfml-graphics	\
+	-lcsfml-network		\
+	-lcsfml-audio		\
 
-CFLAGS= $(INC) \
-	-W \
-	-Wall \
-	-Wextra \
+
+LDFLAGS =		\
+	-L lib/my	\
+	-lm		\
+	-lmy		\
+
+CFLAGS= $(INC)				\
+	-W				\
+	-Wall				\
+	-Wextra				\
+	-Wno-parentheses		\
+	-fdiagnostics-color=always	\
 
 CC =	gcc
 
-all:    $(NAME)
+RULE =	all
 
-$(LIB):
-	$(MAKE) -C lib/my
+LIBS =	lib/my/libmy.a	\
 
-$(NAME):$(OBJ) $(LIB)
-	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
+RES =	
+
+all:	$(LIBS) $(NAME)
+
+windows:RES = icon.res
+windows:LDFLAGS += -mwindows
+windows:icon.res all
+
+icon.res:
+	windres icon.rc -O coff -o icon.res
+
+lib/my/libmy.a:
+	$(MAKE) -C lib/my $(RULE)
+
+$(NAME):$(OBJ)
+	$(CC) -o $(NAME) $(OBJ) $(LDFLAGS) $(CSFML) $(RES)
 
 clean:
 	$(MAKE) -C lib/my clean
 	$(RM) $(OBJ)
+	$(RM) icon.res
 
 fclean:	clean
+	$(RM) $(NAME) $(NAME).exe
+
+ffclean:fclean
 	$(MAKE) -C lib/my fclean
-	$(RM) $(NAME)
-	$(RM) score.dat
 
 re:	fclean all
 
 dbg:	CFLAGS += -g -O0
-dbg:	re
+dbg:	RULE = dbg
+dbg:	ffclean all
+
+epi:	CSFML = -lc_graph_prog
+epi:	CFLAGS += -g -O0
+epi:	RULE = dbg
+epi:	re

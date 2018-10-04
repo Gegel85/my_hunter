@@ -68,3 +68,6 @@ fclean:	clean
 	$(RM) $(NAME)
 
 re:	fclean all
+
+dbg:	CFLAGS += -g
+dbg:	re

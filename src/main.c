@@ -61,5 +61,5 @@ int	main(int argc, char **args)
 	if (returned != -1)
 		return (returned);
 	my_hunter(&game);
-	return (0);
+	return (EXIT_SUCCESS);
 }

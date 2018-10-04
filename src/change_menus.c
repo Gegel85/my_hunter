@@ -11,8 +11,6 @@
 
 void	restart(game_t *game)
 {
-	if (game->clock)
-		sfClock_destroy(game->clock);
 	reset_game(game);
 	my_printf("Restarting game\n");
 	game->menu = 5;

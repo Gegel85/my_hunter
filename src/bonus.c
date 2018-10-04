@@ -23,7 +23,7 @@ void	set_bonus_pos(int bonus, sfVector2f *pos)
 		pos->x += 32;
 }
 
-int	init_bonus(int duck_type)
+unsigned int	init_bonus(int duck_type)
 {
 	switch (duck_type) {
 	case 0:

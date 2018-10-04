@@ -32,8 +32,10 @@ void	display_mouse(game_t *game)
 	sfSprite_setPosition(sprite, pos);
 }
 
-int	analyse_events(sfRenderWindow *window, sfEvent event, game_t *game)
+int	analyse_events(sfRenderWindow *window, game_t *game)
 {
+	sfEvent	event;
+
 	while (sfRenderWindow_pollEvent(window, &event)) {
 		switch ((int)event.type) {
 		case (int)sfEvtClosed:

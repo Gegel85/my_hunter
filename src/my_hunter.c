@@ -57,7 +57,6 @@ void	destroy_all(game_t *game, int nb, sfRenderWindow *window)
 
 void	my_hunter(game_t *game_struct)
 {
-	sfEvent		event;
 	sfVideoMode	mode = {1024, 800, 32};
 	sfRenderWindow	*window;
 	game_t		game = *game_struct;
@@ -67,12 +66,11 @@ void	my_hunter(game_t *game_struct)
 	sfRenderWindow_setFramerateLimit(window, 30);
 	sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 	game.sprites = create_things(&game, nb_sprite);
-	if (game.musics[7])
-		sfMusic_play(game.musics[7]);
+	sfMusic_play(game.musics[7]);
 	while (sfRenderWindow_isOpen(window)) {
-		sfRenderWindow_clear(window, sfBlack);
+		sfRenderWindow_clear(window, (sfColor){0, 0, 0, 255});
 		change_sprites(game.sprites, &game, nb_sprite);
-		analyse_events(window, event, &game);
+		analyse_events(window, &game);
 		display_sprites(window, game.sprites, nb_sprite);
 		sfRenderWindow_display(window);
 	}
