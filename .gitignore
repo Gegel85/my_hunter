@@ -2,3 +2,6 @@ aut.h
 *.o
 *.a
 my_hunter
+*.exe
+cmake-build*
+.idea
