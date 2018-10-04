@@ -1,0 +1,85 @@
+cmake_minimum_required(VERSION 3.12)
+project(my_hunter C)
+
+set(CMAKE_C_STANDARD 11)
+
+include_directories(include)
+include_directories(lib/my/includes)
+
+add_executable(my_hunter
+        include/function.h
+        include/global.h
+        include/global2.h
+        include/macros.h
+        include/structs.h
+        lib/my/includes/flags.h
+        lib/my/includes/my.h
+        lib/my/sources/convert_base.c
+        lib/my/sources/disp.c
+        lib/my/sources/my_compute_power_rec.c
+        lib/my/sources/my_compute_power_rec_long.c
+        lib/my/sources/my_compute_square_root.c
+        lib/my/sources/my_getnbr.c
+        lib/my/sources/my_getnbr_base.c
+        lib/my/sources/my_isneg.c
+        lib/my/sources/my_printf.c
+        lib/my/sources/my_put_nbr.c
+        lib/my/sources/my_put_nbr_unsigned.c
+        lib/my/sources/my_putbase.c
+        lib/my/sources/my_putchar.c
+        lib/my/sources/my_putchar_stderr.c
+        lib/my/sources/my_putfloat.c
+        lib/my/sources/my_putnbr_base.c
+        lib/my/sources/my_putstar.c
+        lib/my/sources/my_putstr.c
+        lib/my/sources/my_putstr_stderr.c
+        lib/my/sources/my_revstr.c
+        lib/my/sources/my_showstr.c
+        lib/my/sources/my_sort_int_array.c
+        lib/my/sources/my_str_islower.c
+        lib/my/sources/my_str_isnum.c
+        lib/my/sources/my_str_isprintable.c
+        lib/my/sources/my_str_isupper.c
+        lib/my/sources/my_strcat.c
+        lib/my/sources/my_strcmp.c
+        lib/my/sources/my_strcpy.c
+        lib/my/sources/my_strdup.c
+        lib/my/sources/my_strlen.c
+        lib/my/sources/my_strlen_rec.c
+        lib/my/sources/my_strlowcase.c
+        lib/my/sources/my_strncat.c
+        lib/my/sources/my_strncmp.c
+        lib/my/sources/my_strncpy.c
+        lib/my/sources/my_strstr.c
+        lib/my/sources/my_strupcase.c
+        lib/my/sources/my_swap.c
+        lib/my/sources/show_int_array.c
+        lib/my/sources/show_str_array.c
+        lib/my/sources/str.c
+        src/bonus.c
+        src/change_menus.c
+        src/change_sprites.c
+        src/combo.c
+        src/draw_bg.c
+        src/duck_death.c
+        src/events.c
+        src/game_over.c
+        src/intro.c
+        src/main.c
+        src/menu.c
+        src/modify_duck_speed.c
+        src/modify_mouse_pos.c
+        src/my_hunter.c
+        src/reset_sprite_pos.c
+        src/save_score.c
+        src/score.c
+        src/show_ammos.c
+        src/sound.c
+        src/sprites.c)
+
+target_link_libraries(${PROJECT_NAME}
+        csfml-graphics
+        csfml-audio
+        csfml-system
+        csfml-window
+        csfml-network)
