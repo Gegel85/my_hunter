@@ -18,5 +18,6 @@ void	draw_bg(game_t *game)
 	show_hscore(game);
 	sfSprite_setPosition(game->sprites[0].sprite, (sfVector2f){0, 0});
 	game->sprites[0].rect.left = game->background * 256;
+	game->sprites[6].rect.left = game->background * 256;
 	sfSprite_setTextureRect(game->sprites[0].sprite, game->sprites[0].rect);
 }
