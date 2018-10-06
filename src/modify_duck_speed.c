@@ -34,6 +34,8 @@ void	change_duck_speed(game_t *game)
 	}
 	if (game->speed < 50)
 		game->speed++;
+	if (game->speed % 2)
+		game->randomMultiplicator--;
 	if (game->ducks[0].hit == 0)
 		sfMusic_play(game->musics[2]);
 	game->combo++;

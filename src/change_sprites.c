@@ -5,9 +5,10 @@
 ** All that involve changing sprites
 */
 
-#include "structs.h"
 #include <SFML/Graphics.h>
+#include <stdlib.h>
 #include "my.h"
+#include "structs.h"
 #include "function.h"
 #include "global.h"
 
@@ -17,7 +18,7 @@ int	change_duck_rect(sfIntRect *rect, game_t *game, int i)
 		game->mousex = game->ducks[0].x + 75;
 		game->mousey = game->ducks[0].y + 100;
 	}
-	switch (game->ducks[i].state / 3) {
+	switch (game->ducks[0].state / 3) {
 	case 2:
 	case 0:
 		rect->left = game->ducks[0].state % 3 * 150 + 439 - 5 * i;
@@ -72,15 +73,33 @@ void	update_ducks(game_t *game)
 	sfVector2f	pos;
 	sprite_f	*sprites = game->sprites;
 
-	game->ducks[0].x += game->speed * (game->ducks[0].type + 1);
+	game->ducks[0].x += game->speed * ((float)game->ducks[0].type / 2 + 1);
+	if (game->ducks[0].direction == 1)
+		game->ducks[0].y += abs(game->speed) * ((float)game->ducks[0].type / 2 + 1) / 2;
+	else if (game->ducks[0].direction == 2)
+		game->ducks[0].y -= abs(game->speed) * ((float)game->ducks[0].type / 2 + 1) / 2;
+	if (game->ducks[0].y < -20) {
+		game->ducks[0].y = -20;
+		game->ducks[0].direction = 0;
+	} else if (game->ducks[0].y > 500) {
+		game->ducks[0].y = 500;
+		game->ducks[0].direction = 0;
+	}
+	if (!game->randomMultiplicator || rand() % game->randomMultiplicator == 0)
+		game->ducks[0].direction = (game->ducks[0].direction + (rand() % 2 + 1)) % 3;
 	if (game->ducks[0].x > 1024) {
 		game->ducks[0].state += 6;
 	} else if (game->ducks[0].x < -110)
 		game->ducks[0].state -= 6;
+	if (game->ducks[0].direction == 0 && game->ducks[0].state % 6 >= 3)
+		game->ducks[0].state -= 3;
+	else if (game->ducks[0].direction != 0 && game->ducks[0].state % 6 < 3)
+		game->ducks[0].state += 3;
 	if (game->ducks[0].x < -110 || game->ducks[0].x > 1024) {
 		game->speed *= -1;
 		game->bonus /= 2;
 		game->ducks[0].hit = 1;
+		game->ducks[0].direction = 0;
 		game->combo = 0;
 	}
 	change_duck_state(&game->ducks[0]);
@@ -88,6 +107,7 @@ void	update_ducks(game_t *game)
 	pos.x = game->ducks[0].x;
 	pos.y = game->ducks[0].y;
 	sfSprite_setPosition(sprites[3].sprite, pos);
+	sfSprite_setPosition(game->sprites[6].sprite, (sfVector2f){0, 552});
 	change_scale(&game->ducks[0], sprites[3].sprite);
 }
 

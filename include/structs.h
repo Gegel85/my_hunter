@@ -26,6 +26,7 @@ typedef struct {
 typedef struct {
 	int	x;
 	int	y;
+	int	direction;
 	int	state;
 	int	type;
 	int	hit;
@@ -59,6 +60,7 @@ typedef struct {
 	unsigned int	bonus;
 	unsigned int	score;
 	unsigned int	maxscore;
+	unsigned int	randomMultiplicator;
 } game_t;
 
 #endif

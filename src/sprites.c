@@ -63,6 +63,7 @@ void	reset_game(game_t *game)
 	game->bonus = init_bonus(game->ducks[0].type);
 	game->intro = 0;
 	game->menu = 5;
+	game->randomMultiplicator = 50;
 	game->combo = 0;
 	game->score = 0;
 }
