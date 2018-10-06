@@ -8,6 +8,7 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include "function.h"
 #include "structs.h"
 #include "global2.h"
@@ -71,7 +72,10 @@ sprite_f	*create_things(game_t *game, int nb)
 	sprite_f	*sprites = malloc(nb * sizeof(*sprites));
 
 	srand(time(NULL));
-	game->ducks = malloc(3 * sizeof(*(game->ducks)));
+	game->ducks = malloc(3 * sizeof(*game->ducks));
+	if (!game->ducks)
+		exit(EXIT_FAILURE);
+	memset(game->ducks, 0, 3 * sizeof(*game->ducks));
 	for (int i = 0; i < nb; i++)
 		sprites[i] = create_sprite(s_config[i]);
 	load_sounds(game);
