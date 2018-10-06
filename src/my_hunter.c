@@ -61,8 +61,13 @@ void	my_hunter(game_t *game_struct)
 	sfRenderWindow	*window;
 	game_t		game = *game_struct;
 	int		nb_sprite = 42;
+	sfImage		*icon = sfImage_createFromFile("sprites/icon.png");
 
 	window = sfRenderWindow_create(mode, "my_hunter", 6, NULL);
+	if (!window)
+		exit(EXIT_FAILURE);
+	if (icon)
+		sfRenderWindow_setIcon(window, 32, 32, sfImage_getPixelsPtr(icon));
 	sfRenderWindow_setFramerateLimit(window, 30);
 	sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 	game.sprites = create_things(&game, nb_sprite);
