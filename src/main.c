@@ -5,9 +5,10 @@
 ** main function of the project
 */
 
+#include <stdlib.h>
+#include <string.h>
 #include "function.h"
 #include "my.h"
-#include <stdlib.h>
 
 void	display_description(void)
 {
@@ -55,7 +56,7 @@ int	main(int argc, char **args)
 	game_t	game;
 	int	returned = -1;
 
-	game.cheat = 0;
+	memset(&game, 0, sizeof(game));
 	if (argc > 1)
 		returned = display_help(argc, args, &game);
 	if (returned != -1)
