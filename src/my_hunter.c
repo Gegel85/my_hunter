@@ -75,7 +75,7 @@ void	my_hunter(game_t *game_struct)
 	sfMusic_play(game.musics[7]);
 	while (sfRenderWindow_isOpen(window)) {
 		sfRenderWindow_clear(window, (sfColor){0, 0, 0, 255});
-		change_sprites(game.sprites, &game, nb_sprite);
+		change_sprites(&game);
 		analyse_events(window, &game);
 		sfRenderWindow_display(window);
 	}

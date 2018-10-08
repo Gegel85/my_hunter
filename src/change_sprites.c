@@ -70,7 +70,6 @@ void	change_duck_state(duck *ducks)
 
 void	update_ducks(game_t *game)
 {
-	sfVector2f	pos;
 	sprite_f	*sprites = game->sprites;
 
 	game->ducks[0].x += game->speed * ((float)game->ducks[0].type / 2 + 1);
@@ -108,7 +107,7 @@ void	update_ducks(game_t *game)
 	change_scale(game->window, &game->ducks[0], sprites[3].sprite);
 }
 
-void	change_sprites(sprite_f *sprites, game_t *game, int nb)
+void	change_sprites(game_t *game)
 {
 	draw_bg(game);
 	change_menus(game);
