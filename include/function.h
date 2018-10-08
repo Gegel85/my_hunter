@@ -13,15 +13,12 @@
 
 int		analyse_events(sfRenderWindow *window, game_t *game);
 int		manage_mouse_click(sfRenderWindow *window, game_t *game);
-int		manage_keyboard(sfEvent event, game_t *game);
 int		close_window(sfRenderWindow *window);
 unsigned int	init_bonus(int duck_type);
 int		rand(void);
 int		modify_duck_speed(game_t *game);
 void		reset_game(game_t *game);
-void		reset_sprite_pos(sprite_f *sprites, int nb);
 void		change_sprites(game_t *game);
-void		display_sprites(sfRenderWindow *win, sprite_f *sprites, int nb);
 void		load_sounds(game_t *game);
 void		change_duck_state(duck *ducks);
 void		draw_bg(game_t *game);
@@ -46,7 +43,6 @@ void		modify_mouse_pos_press(sfEvent *event, sfRenderWindow *window, game_t *gam
 void		change_nb_sprite_rect(int value, game_t *game, int sprite_id);
 sprite_f	create_sprite(sprite_conf config);
 sprite_f	*create_things(game_t *game, int nb);
-sprite_conf	*get_sprites_conf(sprite_conf *configs);
 void		image(sfRenderWindow *window, sfSprite *sprite, sfVector2f pos);
 void		draw_score(game_t *game, unsigned int score, sfVector2f pos, int s_id);
 

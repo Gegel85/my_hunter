@@ -11,18 +11,22 @@
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 
+//Sprite Config
 typedef struct {
-	char	*file_path;
-	int	width;
-	int	height;
+	char		*file_path;
+	int		width;
+	int		height;
+	sfVector2f	scale;
 } sprite_conf;
 
+//Sprite
 typedef struct {
 	sfSprite	*sprite;
 	sfTexture	*texture;
 	sfIntRect	rect;
 } sprite_f;
 
+//Duck struct
 typedef struct {
 	int	x;
 	int	y;
@@ -33,6 +37,7 @@ typedef struct {
 	sfClock	*clock;
 } duck;
 
+//Dog struct
 typedef struct {
 	int	x;
 	int	y;
@@ -40,6 +45,7 @@ typedef struct {
 	int	animation;
 } dog_t;
 
+//Game struct
 typedef struct {
 	int		menu;
 	int		intro;

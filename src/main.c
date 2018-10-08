@@ -10,6 +10,7 @@
 #include "function.h"
 #include "my.h"
 
+//Displays the description in the console
 void	display_description(void)
 {
 	my_printf("\tThe goal is to shoot the ducks. Each duck\n\t");
@@ -30,6 +31,7 @@ void	display_description(void)
 	my_printf("\t\t\tBase bonus points : 300\n\t\t\tSpeed : 3x faster\n");
 }
 
+//Checks the arguments and displays the help
 int	display_help(int argc, char **args, game_t *game)
 {
 	int	return_value = 0;
@@ -51,6 +53,7 @@ int	display_help(int argc, char **args, game_t *game)
 	return (-1);
 }
 
+//Main
 int	main(int argc, char **args)
 {
 	game_t	game;

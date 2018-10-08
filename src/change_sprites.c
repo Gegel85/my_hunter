@@ -68,6 +68,7 @@ void	change_duck_state(duck *ducks)
 	}
 }
 
+//Updates the duck position
 void	update_ducks(game_t *game)
 {
 	sprite_f	*sprites = game->sprites;
@@ -107,6 +108,7 @@ void	update_ducks(game_t *game)
 	change_scale(game->window, &game->ducks[0], sprites[3].sprite);
 }
 
+//Main loop
 void	change_sprites(game_t *game)
 {
 	draw_bg(game);

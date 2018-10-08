@@ -9,32 +9,34 @@
 #include "my.h"
 #include "macros.h"
 #include <unistd.h>
-#include <fcntl.h>
+#include <stdio.h>
 
+//Saves the score the score.dat
 void	save_score(game_t *game)
 {
-	int	fd;
+	FILE	*stream;
 
-	fd = open("score.dat", O_WRONLY | O_CREAT, 0664);
-	if (fd == -1)
+	stream = fopen("score.dat", "wb");
+	if (!stream)
 		my_printf(ERR_SAVE_SCORE);
 	else {
-		write(fd, &game->maxscore, sizeof(game->maxscore));
-		close(fd);
+		fwrite(&game->maxscore, sizeof(game->maxscore), 1, stream);
+		fclose(stream);
 	}
 }
 
+//Loads the best score from score.dat
 void	load_score(game_t *game)
 {
-	int	fd;
+	FILE	*stream;
 
-	fd = open("score.dat", O_RDONLY);
-	if (fd == -1) {
+	stream = fopen("score.dat", "rb");
+	if (!stream) {
 		my_printf(ERR_LOAD_SCORE);
 		game->maxscore = 0;
 	} else {
-		read(fd, &game->maxscore, sizeof(game->maxscore));
-		close(fd);
+		fread(&game->maxscore, sizeof(game->maxscore), 1, stream);
+		fclose(stream);
 		my_printf("Highest score is now %u\n", game->maxscore);
 	}
 }

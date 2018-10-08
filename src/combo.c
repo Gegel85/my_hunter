@@ -9,12 +9,14 @@
 #include "structs.h"
 #include "function.h"
 
+//Sets the combo last digit position
 void	set_combo_pos(int bonus, sfVector2f *pos)
 {
 	for (; bonus >= 10; bonus /= 10)
 		pos->x += 32;
 }
 
+//Displays the compo
 void	display_combo(game_t *game)
 {
 	sfVector2f      pos = {550, 750};

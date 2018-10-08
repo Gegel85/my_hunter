@@ -14,18 +14,21 @@
 #include "global2.h"
 #include "my.h"
 
+
+//Display a sprite on screen at the given position
 void	image(sfRenderWindow *window, sfSprite *sprite, sfVector2f pos)
 {
 	sfSprite_setPosition(sprite, pos);
 	sfRenderWindow_drawSprite(window, sprite, NULL);
 }
 
+
+//Create a new sprite from the config
 sprite_f	create_sprite(sprite_conf config)
 {
 	sfTexture	*texture;
 	sfSprite	*sprite = sfSprite_create();
 	sprite_f	sprite_full;
-	sfVector2f	scale = {4, 4};
 	sfIntRect	rect = {0, 0, config.width, config.height};
 
 	if (!sprite)
@@ -37,10 +40,7 @@ sprite_f	create_sprite(sprite_conf config)
 	}
 	sfSprite_setTexture(sprite, texture, sfTrue);
 	sfSprite_setTextureRect(sprite, rect);
-	if (compare_strings(config.file_path, "sprites/grass_spritesheet.png"))
-		sfSprite_setScale(sprite, scale);
-	if (compare_strings(config.file_path, "sprites/bg_spritesheet.png"))
-		sfSprite_setScale(sprite, scale);
+	sfSprite_setScale(sprite, config.scale);
 	sprite_full.sprite = sprite;
 	sprite_full.texture = texture;
 	sprite_full.rect = rect;
@@ -48,6 +48,7 @@ sprite_f	create_sprite(sprite_conf config)
 	return (sprite_full);
 }
 
+//Reset all vars
 void	reset_game(game_t *game)
 {
 	for (int i = 0; i < 3; i++) {
@@ -64,7 +65,7 @@ void	reset_game(game_t *game)
 	game->dog.y = 575;
 	game->dog.speed = -175;
 	game->dog.animation = 0;
-	game->background = rand()% 6;
+	game->background = rand() % 6;
 	game->speed = 10;
 	game->var = 0.1;
 	game->bonus = init_bonus(game->ducks[0].type);
@@ -75,6 +76,7 @@ void	reset_game(game_t *game)
 	game->score = 0;
 }
 
+//Create all game objects and init vars
 sprite_f	*create_things(game_t *game, int nb)
 {
 	sprite_f	*sprites = malloc(nb * sizeof(*sprites));

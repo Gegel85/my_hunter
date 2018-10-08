@@ -12,6 +12,7 @@
 #include "my.h"
 #include "macros.h"
 
+//Verify if the score is better than the best score
 void	verify_score(game_t *game)
 {
 	int	miss = game->miss;
@@ -25,6 +26,7 @@ void	verify_score(game_t *game)
 	my_printf("Highest score of this session was %u !\n", game->maxscore);
 }
 
+//Destroy the csfml objects
 void	free_csfml(game_t *game, int nb)
 {
 	for (int i = 0; i < nb; i++)
@@ -41,6 +43,7 @@ void	free_csfml(game_t *game, int nb)
 			sfMusic_destroy(game->musics[i]);
 }
 
+//Save the score and destroy the loaded objects
 void	destroy_all(game_t *game, int nb, sfRenderWindow *window)
 {
 	verify_score(game);
@@ -52,9 +55,11 @@ void	destroy_all(game_t *game, int nb, sfRenderWindow *window)
 	sfClock_destroy(game->clock);
 	free(game->ducks);
 	free(game->sprites);
+	free(game->musics);
 	sfRenderWindow_destroy(window);
 }
 
+//Create the window and run the game
 void	my_hunter(game_t *game_struct)
 {
 	sfVideoMode	mode = {1024, 800, 32};

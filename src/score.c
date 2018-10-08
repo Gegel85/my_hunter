@@ -9,6 +9,7 @@
 #include "structs.h"
 #include "function.h"
 
+//Change the rect of the sprite according to the value given
 void	change_nb_sprite_rect(int value, game_t *game, int sprite_id)
 {
 	game->sprites[sprite_id].rect.top = 0;
@@ -18,6 +19,7 @@ void	change_nb_sprite_rect(int value, game_t *game, int sprite_id)
 	sfSprite_setTextureRect(game->sprites[sprite_id].sprite, game->sprites[sprite_id].rect);
 }
 
+//Draw a number on screen
 void	draw_score(game_t *game, unsigned int score, sfVector2f pos, int s_id)
 {
 	sfSprite_setScale(game->sprites[s_id].sprite, (sfVector2f){4, 4});
@@ -30,6 +32,7 @@ void	draw_score(game_t *game, unsigned int score, sfVector2f pos, int s_id)
 	}
 }
 
+//Draw the high score
 void	show_hscore(game_t *game)
 {
 	sfVector2f	pos = {829, 10};
@@ -46,6 +49,7 @@ void	show_hscore(game_t *game)
 	draw_score(game, game->maxscore, pos, 23);
 }
 
+//Draw the current player score
 void	show_score(game_t *game)
 {
 	sfVector2f	pos = {0, 732};

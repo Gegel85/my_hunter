@@ -8,6 +8,7 @@
 #include "structs.h"
 #include "function.h"
 
+//Game over loop
 void	game_over(game_t *game)
 {
 	sfVector2f	pos;

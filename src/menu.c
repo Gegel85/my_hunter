@@ -9,6 +9,7 @@
 #include "structs.h"
 #include "function.h"
 
+//Changes the rect of the main menu ducks
 void	change_duck(duck *duck_ex, sfIntRect *rect)
 {
 	change_duck_state(duck_ex);

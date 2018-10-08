@@ -10,6 +10,7 @@
 #include "my.h"
 #include "structs.h"
 
+//Load game sounds
 void	load_sounds(game_t *game)
 {
 	game->musics = malloc(sizeof(*game->musics) * 8);

@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <SFML/Graphics.h>
 
+//Change the dog rect for the second part of the intro
 void	set_dog_rect_int(game_t *game, int i)
 {
 	int		h = game->dog.animation % 4;
@@ -31,6 +32,7 @@ void	set_dog_rect_int(game_t *game, int i)
 	sfSprite_setTextureRect(game->sprites[i].sprite, game->sprites[i].rect);
 }
 
+//Change the dog sprite when needed
 void	set_dog_sprite(game_t *game)
 {
 	sfVector2f	pos = {game->dog.x, game->dog.y};
@@ -58,6 +60,7 @@ void	set_dog_sprite(game_t *game)
 	}
 }
 
+//Updates the dog's animation for the intro
 void	update_dog(game_t *game)
 {
 	sfTime		time;

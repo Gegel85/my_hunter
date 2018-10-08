@@ -9,6 +9,7 @@
 #include "structs.h"
 #include "function.h"
 
+//Displays the background
 void	draw_bg(game_t *game)
 {
 	game->sprites[0].rect.left = game->background * 256;

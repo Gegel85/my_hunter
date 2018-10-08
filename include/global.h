@@ -11,6 +11,7 @@
 #include "structs.h"
 #include "function.h"
 
+//Game menus functions
 void	(*game_fcts[])(game_t *) = {
 	&update_dog,
 	&update_ducks,

@@ -9,6 +9,7 @@
 #include "function.h"
 #include "structs.h"
 
+//Displays the ammunitions left before Game Over
 void	show_ammos(game_t *game)
 {
 	int		miss = 3 - game->miss;

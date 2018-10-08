@@ -11,11 +11,12 @@
 #include "function.h"
 #include "my.h"
 
+//Display the mouse and highlight the buttons
 void	display_mouse(game_t *game)
 {
 	sfSprite	*sprite1 = game->sprites[33].sprite;
 	sfSprite	*sprite2 = game->sprites[34].sprite;
-	sfSprite	*sprite = game->sprites[37].sprite;
+	sfSprite	*mouseSprite = game->sprites[37].sprite;
 	int		mx = game->mousex;
 	int		my = game->mousey;
 	sfVector2f	nul = {0, 0};
@@ -24,12 +25,13 @@ void	display_mouse(game_t *game)
 	sfSprite_setScale(sprite1, (sfVector2f){4, 4});
 	sfSprite_setScale(sprite2, (sfVector2f){4, 4});
 	if (game->menu == 5) {
+		//In main menu, check if buttons needs to be highlighted
 		if (mx >= 342 && mx <= 680 && my >= 496 && my <= 580)
 			image(game->window,sprite1, nul);
 		else if (mx >= 342 && mx <= 680 && my >= 596 && my <= 680)
 			image(game->window,sprite2, nul);
 	}
-	image(game->window,sprite, pos);
+	image(game->window,mouseSprite, pos);
 }
 
 int	analyse_events(sfRenderWindow *window, game_t *game)

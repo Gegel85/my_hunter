@@ -10,19 +10,24 @@
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 
+//Update the state of the duck
 void	change_state(game_t *game, float sec)
 {
 	if (sec > game->var) {
-		if (game->ducks[0].state == 9)
+		//The duck was not falling, make it fall
+		if (game->ducks[0].state == 9) {
 			sfMusic_play(game->musics[4]);
-		game->var = 0.07;
+			game->var = 0.07;
+		}
 		game->ducks[0].state++;
 		if (game->ducks[0].clock)
 			sfClock_restart(game->ducks[0].clock);
+		//Reset the animation when it gets too high
 		if (game->ducks[0].state == 12)
 			game->ducks[0].state = 10;
 	}
 	if (game->ducks[0].y >= 525) {
+		//The duck has hit the ground
 		if (game->musics[4])
 			sfMusic_stop(game->musics[4]);
 		if (game->musics[5])
@@ -34,20 +39,20 @@ void	change_state(game_t *game, float sec)
 	}
 }
 
+//Change the duck rect
 void	change_rect(game_t *game)
 {
 	int	state = game->ducks[0].state;
 
 	switch (state) {
-	case 9:
+	case 9:	//Duck is hit
 		game->sprites[3].rect.top = 175 * game->ducks[0].type;
 		game->sprites[3].rect.left = 889 + game->ducks[0].type * 5;
 		game->sprites[3].rect.width = 150;
 		game->sprites[3].rect.height = 170;
-		display_bonus(game);
 		break;
 	case 10:
-	case 11:
+	case 11://Falling duck
 		game->sprites[3].rect.top = 175 * game->ducks[0].type;
 		game->sprites[3].rect.left = 1050 + 100 * (state - 10);
 		game->sprites[3].rect.width = 100;
@@ -56,6 +61,7 @@ void	change_rect(game_t *game)
 	sfSprite_setTextureRect(game->sprites[3].sprite, game->sprites[3].rect);
 }
 
+//Make the duck go down
 void	duck_fall(game_t *game)
 {
 	sfVector2f	pos;
@@ -72,8 +78,11 @@ void	duck_fall(game_t *game)
 	game->ducks[0].y += (game->ducks[0].state - 8) / 2 * 20 * cond;
 	image(game->window,game->sprites[3].sprite, pos);
 	image(game->window,game->sprites[6].sprite, (sfVector2f){0, 552});
+	if (game->ducks[0].state == 9)
+		display_bonus(game);
 }
 
+//Set the dog rect
 void	modify_dog_rect(game_t *game, float sec)
 {
 	if (sec > 1 && game->var < 1) {
@@ -88,6 +97,7 @@ void	modify_dog_rect(game_t *game, float sec)
 	sfSprite_setTextureRect(game->sprites[2].sprite, game->sprites[2].rect);
 }
 
+//Display the dog
 void	show_dog(game_t *game)
 {
 	sfTime		time;

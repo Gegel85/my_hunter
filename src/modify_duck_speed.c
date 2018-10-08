@@ -10,6 +10,7 @@
 #include "function.h"
 #include <SFML/Graphics.h>
 
+//Change the duck type randomly
 void	create_type(duck *duck)
 {
 	int	type = rand() % 12;
@@ -22,6 +23,7 @@ void	create_type(duck *duck)
 		duck->type = 2;
 }
 
+//Change the speed when the duck is hit
 void	change_duck_speed(game_t *game)
 {
 	game->menu = 3;
@@ -46,6 +48,7 @@ void	change_duck_speed(game_t *game)
 	sfClock_restart(game->ducks[0].clock);
 }
 
+//Check if the player shot on the duck ot not
 int	modify_duck_speed(game_t *game)
 {
 	int	x = game->ducks[0].x;
