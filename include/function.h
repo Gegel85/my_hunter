@@ -42,11 +42,11 @@ void		my_hunter(game_t *game_struct);
 void		update_ducks(game_t *game);
 void		menu(game_t *game);
 void		display_combo(game_t *game);
-void		modify_mouse_pos_press(sfEvent *event, sfRenderWindow *window, \
-game_t *game);
+void		modify_mouse_pos_press(sfEvent *event, sfRenderWindow *window, game_t *game);
 void		change_nb_sprite_rect(int value, game_t *game, int sprite_id);
 sprite_f	create_sprite(sprite_conf config);
 sprite_f	*create_things(game_t *game, int nb);
 sprite_conf	*get_sprites_conf(sprite_conf *configs);
+void		image(sfRenderWindow *window, sfSprite *sprite, sfVector2f pos);
 
 #endif

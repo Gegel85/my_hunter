@@ -53,6 +53,7 @@ void	change_rect(game_t *game)
 		game->sprites[3].rect.width = 100;
 		game->sprites[3].rect.height = 170;
 	}
+	sfSprite_setTextureRect(game->sprites[3].sprite, game->sprites[3].rect);
 }
 
 void	duck_fall(game_t *game)
@@ -69,8 +70,8 @@ void	duck_fall(game_t *game)
 	pos.x = game->ducks[0].x;
 	pos.y = game->ducks[0].y;
 	game->ducks[0].y += (game->ducks[0].state - 8) / 2 * 20 * cond;
-	sfSprite_setPosition(game->sprites[6].sprite, (sfVector2f){0, 552});
-	sfSprite_setPosition(game->sprites[3].sprite, pos);
+	image(game->window,game->sprites[3].sprite, pos);
+	image(game->window,game->sprites[6].sprite, (sfVector2f){0, 552});
 }
 
 void	modify_dog_rect(game_t *game, float sec)
@@ -84,7 +85,7 @@ void	modify_dog_rect(game_t *game, float sec)
 	game->sprites[2].rect.left = 550;
 	game->sprites[2].rect.width = 219;
 	game->sprites[2].rect.height = 220;
-	sfSprite_setPosition(game->sprites[6].sprite, (sfVector2f){0, 552});
+	sfSprite_setTextureRect(game->sprites[2].sprite, game->sprites[2].rect);
 }
 
 void	show_dog(game_t *game)
@@ -103,6 +104,7 @@ void	show_dog(game_t *game)
 			game->dog.y += 5;
 		else
 			game->var++;
-		sfSprite_setPosition(game->sprites[2].sprite, pos);
+		image(game->window,game->sprites[2].sprite, pos);
 	}
+	image(game->window,game->sprites[6].sprite, (sfVector2f){0, 552});
 }

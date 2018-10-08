@@ -4,7 +4,6 @@ SRC =	src/main.c \
 	src/events.c \
 	src/sprites.c \
 	src/change_sprites.c \
-	src/reset_sprite_pos.c \
 	src/sound.c \
 	src/intro.c \
 	src/draw_bg.c \

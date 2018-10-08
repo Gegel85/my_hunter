@@ -25,11 +25,11 @@ void	display_mouse(game_t *game)
 	sfSprite_setScale(sprite2, (sfVector2f){4, 4});
 	if (game->menu == 5) {
 		if (mx >= 342 && mx <= 680 && my >= 496 && my <= 580)
-			sfSprite_setPosition(sprite1, nul);
+			image(game->window,sprite1, nul);
 		else if (mx >= 342 && mx <= 680 && my >= 596 && my <= 680)
-			sfSprite_setPosition(sprite2, nul);
+			image(game->window,sprite2, nul);
 	}
-	sfSprite_setPosition(sprite, pos);
+	image(game->window,sprite, pos);
 }
 
 int	analyse_events(sfRenderWindow *window, game_t *game)

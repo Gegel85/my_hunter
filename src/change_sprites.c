@@ -35,18 +35,18 @@ int	change_duck_rect(sfIntRect *rect, game_t *game, int i)
 	return (0);
 }
 
-void	change_scale(duck *ducks, sfSprite *sprite)
+void	change_scale(sfRenderWindow *window, duck *ducks, sfSprite *sprite)
 {
 	sfVector2f	new_scale;
-	sfVector2f	pos;
+	sfVector2f	pos = {ducks->x, ducks->y};
 
 	if (ducks->state / 3 == 2 || ducks->state / 3 == 3) {
 		pos.x = ducks->x + 110;
 		pos.y = ducks->y;
-		sfSprite_setPosition(sprite, pos);
 		new_scale = (sfVector2f){-1, 1};
 	} else
 		new_scale = (sfVector2f){1, 1};
+	image(window, sprite, pos);
 	sfSprite_setScale(sprite, new_scale);
 }
 
@@ -102,19 +102,16 @@ void	update_ducks(game_t *game)
 		game->ducks[0].direction = 0;
 		game->combo = 0;
 	}
-	change_duck_state(&game->ducks[0]);
+	sfSprite_setTextureRect(game->sprites[3].sprite, game->sprites[3].rect);
 	change_duck_rect(&sprites[3].rect, game, game->ducks[0].type);
-	pos.x = game->ducks[0].x;
-	pos.y = game->ducks[0].y;
-	sfSprite_setPosition(sprites[3].sprite, pos);
-	sfSprite_setPosition(game->sprites[6].sprite, (sfVector2f){0, 552});
-	change_scale(&game->ducks[0], sprites[3].sprite);
+	change_duck_state(&game->ducks[0]);
+	change_scale(game->window, &game->ducks[0], sprites[3].sprite);
 }
 
 void	change_sprites(sprite_f *sprites, game_t *game, int nb)
 {
-	reset_sprite_pos(sprites, nb);
 	draw_bg(game);
 	change_menus(game);
+	image(game->window,game->sprites[6].sprite, (sfVector2f){0, 552});
 	game_fcts[game->menu](game);
 }

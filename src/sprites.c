@@ -14,6 +14,12 @@
 #include "global2.h"
 #include "my.h"
 
+void	image(sfRenderWindow *window, sfSprite *sprite, sfVector2f pos)
+{
+	sfSprite_setPosition(sprite, pos);
+	sfRenderWindow_drawSprite(window, sprite, NULL);
+}
+
 sprite_f	create_sprite(sprite_conf config)
 {
 	sfTexture	*texture;
@@ -38,6 +44,7 @@ sprite_f	create_sprite(sprite_conf config)
 	sprite_full.sprite = sprite;
 	sprite_full.texture = texture;
 	sprite_full.rect = rect;
+	sfSprite_setTextureRect(sprite, rect);
 	return (sprite_full);
 }
 
@@ -87,12 +94,4 @@ sprite_f	*create_things(game_t *game, int nb)
 	game->clock = sfClock_create();
 	reset_game(game);
 	return (sprites);
-}
-
-void	display_sprites(sfRenderWindow *window, sprite_f *sprites, int nb)
-{
-	for (int i = 0; i < nb; i++) {
-		sfSprite_setTextureRect(sprites[i].sprite, sprites[i].rect);
-		sfRenderWindow_drawSprite(window, sprites[i].sprite, NULL);
-	}
 }

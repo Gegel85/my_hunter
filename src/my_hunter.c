@@ -71,12 +71,12 @@ void	my_hunter(game_t *game_struct)
 	sfRenderWindow_setFramerateLimit(window, 30);
 	sfRenderWindow_setMouseCursorVisible(window, sfFalse);
 	game.sprites = create_things(&game, nb_sprite);
+	game.window = window;
 	sfMusic_play(game.musics[7]);
 	while (sfRenderWindow_isOpen(window)) {
 		sfRenderWindow_clear(window, (sfColor){0, 0, 0, 255});
 		change_sprites(game.sprites, &game, nb_sprite);
 		analyse_events(window, &game);
-		display_sprites(window, game.sprites, nb_sprite);
 		sfRenderWindow_display(window);
 	}
 	destroy_all(&game, nb_sprite, window);

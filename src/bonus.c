@@ -45,14 +45,13 @@ void	display_bonus(game_t *game)
 	if (bonus > 0) {
 		find_good_pos(&pos);
 		sfSprite_setScale(game->sprites[17].sprite, scale);
-		sfSprite_setPosition(game->sprites[17].sprite, pos);
+		image(game->window, game->sprites[17].sprite, pos);
 		pos.x += 196;
 		set_bonus_pos(bonus, &pos);
-		for (int i = 32; bonus > 0 && i >= 0; i--) {
-			sfSprite_setScale(game->sprites[i].sprite, scale);
-			sfSprite_setPosition(game->sprites[i].sprite, pos);
-			change_nb_sprite_rect(bonus % 10 + 1, game, i);
-			bonus /= 10;
+		sfSprite_setScale(game->sprites[32].sprite, scale);
+		for (; bonus > 0; bonus /= 10) {
+			change_nb_sprite_rect(bonus % 10 + 1, game, 32);
+			image(game->window,game->sprites[32].sprite, pos);
 			pos.x -= 32;
 		}
 	}

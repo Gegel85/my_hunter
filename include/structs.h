@@ -61,6 +61,7 @@ typedef struct {
 	unsigned int	score;
 	unsigned int	maxscore;
 	unsigned int	randomMultiplicator;
+	sfRenderWindow	*window;
 } game_t;
 
 #endif
