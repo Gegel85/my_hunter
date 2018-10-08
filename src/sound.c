@@ -26,7 +26,6 @@ void	load_sounds(game_t *game)
 			my_printf("Error: Cannot load a sound file\n");
 			exit(EXIT_FAILURE);
 		}
-		sfMusic_setVolume(game->musics[i], 5);
 	}
 	sfMusic_setLoop(game->musics[7], sfTrue);
 }
